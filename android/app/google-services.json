@@ -1,0 +1,30 @@
+{
+  "project_info": {
+    "project_number": "739597912068",
+    "firebase_url": "https://actividad1-58fc9-default-rtdb.europe-west1.firebasedatabase.app",
+    "project_id": "actividad1-58fc9",
+    "storage_bucket": "actividad1-58fc9.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:739597912068:android:71351ef1010b392f844d51",
+        "android_client_info": {
+          "package_name": "dam2.marcos.actividad1"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCEFW0tr5mxnAcWPCaY5oPhVfZ3MQCBgOk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
