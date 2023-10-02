@@ -4,6 +4,14 @@ class vistaLogin extends StatelessWidget{
 
   late BuildContext _context;
 
+  void onClickAccept() {
+
+  }
+
+  void onClickRegister() {
+    Navigator.of(_context).popAndPushNamed('/vistaregistrar');
+  }
+
   @override
   Widget build(BuildContext context) {
     _context = context;
@@ -33,10 +41,17 @@ class vistaLogin extends StatelessWidget{
       ),
       ),
 
+      Row(mainAxisAlignment: MainAxisAlignment.center,
+      children: [
+        TextButton(onPressed: onClickAccept, child: Text('Accept')),
+        TextButton(onPressed: onClickRegister, child: Text('Register'))
+      ],)
+
     ],);
 
     AppBar appBar = AppBar(
       title: Text('LOGIN'),
+      centerTitle: true,
       backgroundColor: Colors.amber,
       foregroundColor: Colors.deepOrange,
     );
@@ -49,7 +64,4 @@ class vistaLogin extends StatelessWidget{
 
     return scaf;
   }
-
-
-
 }
