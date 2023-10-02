@@ -8,7 +8,6 @@ class Actividad1 extends StatelessWidget {
     MaterialApp materialApp = MaterialApp(title: "Actividad 1",
       routes: {
         '/vistalogin':(context) => vistaLogin(),
-
       },
       initialRoute: '/vistalogin',
     );

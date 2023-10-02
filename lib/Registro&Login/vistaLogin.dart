@@ -34,39 +34,45 @@ class vistaLogin extends StatelessWidget{
     Column columna = Column(children: [
       // Separación Tabla
       Padding(padding: EdgeInsets.symmetric(vertical: 10)),
-      Text('ACTIVIDAD 1', style: TextStyle(fontSize: 18)),
+      Text('ACTIVIDAD 1', style: TextStyle(fontSize: 18, fontFamily: 'Raleway')),
 
-      Padding(padding: EdgeInsets.symmetric(
-          horizontal: Checkbox.width, vertical: 14), child: TextField(
-        controller: tecUsername,
-        decoration: InputDecoration(
-          border: OutlineInputBorder(),
-          filled: true,
-          fillColor: Colors.white,
-          hintText: 'Input Username ACTIVIDAD1',
+      Padding(padding: EdgeInsets.symmetric(horizontal: Checkbox.width, vertical: 14),
+        child: Flexible(child: SizedBox (width: 450, child: TextField(
+          controller: tecUsername,
+          decoration: InputDecoration(
+            border: OutlineInputBorder(),
+            filled: true,
+            fillColor: Colors.white,
+            hintText: 'Input Username ACTIVIDAD1',
+          ),
+        ),
+        ),
         ),
       ),
-      ),
 
-      Padding(padding: EdgeInsets.symmetric(
-          horizontal: Checkbox.width, vertical: 14), child: TextField(
-        controller: tecPassword,
-        decoration: InputDecoration(
-          border: OutlineInputBorder(),
-          filled: true,
-          fillColor: Colors.white,
-          hintText: 'Input Password ACTIVIDAD1',
+      Padding(padding: EdgeInsets.symmetric(horizontal: Checkbox.width, vertical: 14),
+        child: Flexible(child: SizedBox(width: 450, child: TextField(
+          controller: tecPassword,
+          obscureText: true,
+          decoration: InputDecoration(
+            border: OutlineInputBorder(),
+            filled: true,
+            fillColor: Colors.white,
+            hintText: 'Input Password ACTIVIDAD1',
+          ),
+        ),
+        ),
         ),
       ),
-      ),
 
-      Row(mainAxisAlignment: MainAxisAlignment.center,
+      Row(mainAxisAlignment: MainAxisAlignment.center, crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           TextButton(onPressed: onClickAccept, child: Text('Accept')),
           TextButton(onPressed: onClickRegister, child: Text('Register'))
         ],)
-
-    ],);
+    ],
+        mainAxisAlignment: MainAxisAlignment.center
+    );
 
     AppBar appBar = AppBar(
       title: Text('LOGIN'),
