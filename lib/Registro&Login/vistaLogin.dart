@@ -1,11 +1,26 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
 class vistaLogin extends StatelessWidget{
 
   late BuildContext _context;
 
-  void onClickAccept() {
+  TextEditingController tecUsername = TextEditingController();
+  TextEditingController tecPassword = TextEditingController();
 
+  void onClickAccept() async {
+    try {
+      final credential = await FirebaseAuth.instance.signInWithEmailAndPassword(
+          email: tecUsername.text,
+          password: tecPassword.text
+      );
+    } on FirebaseAuthException catch (e) {
+      if (e.code == 'user-not-found') {
+        print('No user found for that email.');
+      } else if (e.code == 'wrong-password') {
+        print('Wrong password provided for that user.');
+      }
+    }
   }
 
   void onClickRegister() {
@@ -21,17 +36,21 @@ class vistaLogin extends StatelessWidget{
       Padding(padding: EdgeInsets.symmetric(vertical: 10)),
       Text('ACTIVIDAD 1', style: TextStyle(fontSize: 18)),
 
-      Padding(padding: EdgeInsets.symmetric(horizontal: Checkbox.width, vertical: 14), child: TextField(
+      Padding(padding: EdgeInsets.symmetric(
+          horizontal: Checkbox.width, vertical: 14), child: TextField(
+        controller: tecUsername,
         decoration: InputDecoration(
           border: OutlineInputBorder(),
           filled: true,
           fillColor: Colors.white,
-          hintText: 'Input User ACTIVIDAD1',
+          hintText: 'Input Username ACTIVIDAD1',
         ),
       ),
       ),
 
-      Padding(padding: EdgeInsets.symmetric(horizontal: Checkbox.width, vertical: 14), child: TextField(
+      Padding(padding: EdgeInsets.symmetric(
+          horizontal: Checkbox.width, vertical: 14), child: TextField(
+        controller: tecPassword,
         decoration: InputDecoration(
           border: OutlineInputBorder(),
           filled: true,
@@ -42,10 +61,10 @@ class vistaLogin extends StatelessWidget{
       ),
 
       Row(mainAxisAlignment: MainAxisAlignment.center,
-      children: [
-        TextButton(onPressed: onClickAccept, child: Text('Accept')),
-        TextButton(onPressed: onClickRegister, child: Text('Register'))
-      ],)
+        children: [
+          TextButton(onPressed: onClickAccept, child: Text('Accept')),
+          TextButton(onPressed: onClickRegister, child: Text('Register'))
+        ],)
 
     ],);
 
