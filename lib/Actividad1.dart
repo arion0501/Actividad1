@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-class Actividad1 extends StatelessWidget{
+class Actividad1 extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
