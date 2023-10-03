@@ -1,30 +1,34 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
-class vistaLogin extends StatelessWidget {
+class vistaRegistro extends StatelessWidget {
 
   late BuildContext _context;
 
   TextEditingController tecUsername = TextEditingController();
   TextEditingController tecPassword = TextEditingController();
+  TextEditingController tecRepassword = TextEditingController();
 
   void onClickAccept() async {
     try {
-      final credential = await FirebaseAuth.instance.signInWithEmailAndPassword(
-          email: tecUsername.text,
-          password: tecPassword.text
+      final credential = await FirebaseAuth.instance
+          .createUserWithEmailAndPassword(
+        email: tecUsername.text,
+        password: tecPassword.text,
       );
     } on FirebaseAuthException catch (e) {
-      if (e.code == 'user-not-found') {
-        print('No user found for that email.');
-      } else if (e.code == 'wrong-password') {
-        print('Wrong password provided for that user.');
+      if (e.code == 'weak-password') {
+        print('The password provided is too weak.');
+      } else if (e.code == 'email-already-in-use') {
+        print('The account already exists for that email.');
       }
+    } catch (e) {
+      print(e);
     }
   }
 
-  void onClickRegister() {
-    Navigator.of(_context).popAndPushNamed('/vistaregistro');
+  void onClickCancel() {
+    Navigator.of(_context).popAndPushNamed('/vistalogin');
   }
 
   @override
@@ -65,17 +69,32 @@ class vistaLogin extends StatelessWidget {
         ),
       ),
 
+      Padding(padding: EdgeInsets.symmetric(horizontal: Checkbox.width, vertical: 14),
+        child: Flexible(child: SizedBox(width: 450, child: TextField(
+          controller: tecRepassword,
+          obscureText: true,
+          decoration: InputDecoration(
+            border: OutlineInputBorder(),
+            filled: true,
+            fillColor: Colors.white,
+            hintText: 'Input Repassword ACTIVIDAD1',
+          ),
+        ),
+        ),
+        ),
+      ),
+
       Row(mainAxisAlignment: MainAxisAlignment.center, crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           TextButton(onPressed: onClickAccept, child: Text('Accept')),
-          TextButton(onPressed: onClickRegister, child: Text('Register'))
+          TextButton(onPressed: onClickCancel, child: Text('Cancel'))
         ],)
     ],
         mainAxisAlignment: MainAxisAlignment.center
     );
 
     AppBar appBar = AppBar(
-      title: Text('LOGIN'),
+      title: Text('REGISTER'),
       centerTitle: true,
       backgroundColor: Colors.amber,
       foregroundColor: Colors.deepOrange,
