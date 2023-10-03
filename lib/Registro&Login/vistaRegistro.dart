@@ -86,8 +86,8 @@ class vistaRegistro extends StatelessWidget {
 
       Row(mainAxisAlignment: MainAxisAlignment.center, crossAxisAlignment: CrossAxisAlignment.center,
         children: [
-          TextButton(onPressed: onClickAccept, child: Text('Accept')),
-          TextButton(onPressed: onClickCancel, child: Text('Cancel'))
+          TextButton(onPressed: onClickAccept, style: TextButton.styleFrom(foregroundColor: Colors.black), child: Text('Accept')),
+          TextButton(onPressed: onClickCancel, style: TextButton.styleFrom(foregroundColor: Colors.black), child: Text('Cancel'))
         ],)
     ],
         mainAxisAlignment: MainAxisAlignment.center

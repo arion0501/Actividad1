@@ -67,8 +67,8 @@ class vistaLogin extends StatelessWidget {
 
       Row(mainAxisAlignment: MainAxisAlignment.center, crossAxisAlignment: CrossAxisAlignment.center,
         children: [
-          TextButton(onPressed: onClickAccept, child: Text('Accept')),
-          TextButton(onPressed: onClickRegister, child: Text('Register'))
+          TextButton(onPressed: onClickAccept, style: TextButton.styleFrom(foregroundColor: Colors.black), child: Text('Accept')),
+          TextButton(onPressed: onClickRegister, style: TextButton.styleFrom(foregroundColor: Colors.black), child: Text('Register'))
         ],)
     ],
         mainAxisAlignment: MainAxisAlignment.center
