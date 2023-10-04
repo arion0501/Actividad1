@@ -38,7 +38,7 @@ class vistaRegistro extends StatelessWidget {
     Column columna = Column(children: [
       // Separación Tabla
       Padding(padding: EdgeInsets.symmetric(vertical: 10)),
-      Text('ACTIVIDAD 1', style: TextStyle(fontSize: 18, fontFamily: 'Raleway')),
+      Text('ACTIVIDAD 1', style: TextStyle(fontSize: 20, fontFamily: 'Raleway')),
 
       Padding(padding: EdgeInsets.symmetric(horizontal: Checkbox.width, vertical: 14),
         child: Flexible(child: SizedBox (width: 450, child: TextField(
@@ -94,7 +94,7 @@ class vistaRegistro extends StatelessWidget {
     );
 
     AppBar appBar = AppBar(
-      title: Text('REGISTER'),
+      title: Text('REGISTER', style: TextStyle(fontSize: 24)),
       centerTitle: true,
       backgroundColor: Colors.amber,
       foregroundColor: Colors.deepOrange,

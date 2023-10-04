@@ -1,3 +1,4 @@
+import 'package:actividad1/Home/vistaHome.dart';
 import 'package:actividad1/Registro&Login/vistaLogin.dart';
 import 'package:flutter/material.dart';
 import 'Registro&Login/vistaRegistro.dart';
@@ -10,9 +11,9 @@ class Actividad1 extends StatelessWidget {
       routes: {
         '/vistalogin':(context) => vistaLogin(),
         '/vistaregistro':(context) => vistaRegistro(),
-
+        '/vistahome': (context) => vistaHome()
       },
-      initialRoute: '/vistalogin',
+      initialRoute: '/vistahome',
     );
 
     return materialApp;
