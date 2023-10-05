@@ -13,7 +13,7 @@ class Actividad1 extends StatelessWidget {
         '/vistaregistro':(context) => vistaRegistro(),
         '/vistahome': (context) => vistaHome()
       },
-      initialRoute: '/vistahome',
+      initialRoute: '/vistalogin',
     );
 
     return materialApp;
