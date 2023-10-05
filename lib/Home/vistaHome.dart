@@ -16,21 +16,22 @@ class vistaHome extends StatelessWidget {
 
       Padding(padding: EdgeInsets.symmetric(vertical: 15),
           child: Text('¡Bienvenido al Home!',
-            style: TextStyle(fontSize: 22),)
+              style: TextStyle(fontSize: 22))
       ),
 
       Row(mainAxisAlignment: MainAxisAlignment.center, crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            TextButton(onPressed: onClickVolver, style: TextButton.styleFrom(foregroundColor: Colors.black), child: Text('Volver')),
+            TextButton(onPressed: onClickVolver,
+                style: TextButton.styleFrom(foregroundColor: Colors.black),
+                child: Text('Volver',
+                    style: TextStyle(fontFamily: 'DancingScript'))),
           ]
       )
     ]
     );
 
-
-
     AppBar appBar = AppBar(
-      title: Text('Home'),
+      title: Text('Home', style: TextStyle(fontFamily: 'DelaGothicOne')),
       centerTitle: true,
       backgroundColor: Colors.amber,
       foregroundColor: Colors.deepOrange,
