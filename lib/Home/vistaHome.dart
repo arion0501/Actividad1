@@ -12,20 +12,28 @@ class vistaHome extends StatelessWidget {
   Widget build(BuildContext context) {
     _context = context;
 
-    Column columna = Column(
+    Column columna = Column(children : [
 
-    );
+      Padding(padding: EdgeInsets.symmetric(vertical: 15),
+          child: Text('¡Bienvenido al Home!',
+            style: TextStyle(fontSize: 22),)
+      ),
 
-    Row(mainAxisAlignment: MainAxisAlignment.center, children: [
-      TextButton(onPressed: onClickVolver, child: Text('Volver')),
+      Row(mainAxisAlignment: MainAxisAlignment.center, crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            TextButton(onPressed: onClickVolver, style: TextButton.styleFrom(foregroundColor: Colors.black), child: Text('Volver')),
+          ]
+      )
     ]
     );
+
+
 
     AppBar appBar = AppBar(
       title: Text('Home'),
       centerTitle: true,
-      backgroundColor: Colors.deepOrange,
-      foregroundColor: Colors.black,
+      backgroundColor: Colors.amber,
+      foregroundColor: Colors.deepOrange,
     );
 
     Scaffold scaf = Scaffold(
