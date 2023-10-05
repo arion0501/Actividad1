@@ -14,6 +14,9 @@ class vistaLogin extends StatelessWidget {
           email: tecUsername.text,
           password: tecPassword.text
       );
+
+      Navigator.of(_context).popAndPushNamed('/vistahome');
+
     } on FirebaseAuthException catch (e) {
       if (e.code == 'user-not-found') {
         print('No user found for that email.');
