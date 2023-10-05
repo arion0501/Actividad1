@@ -16,6 +16,9 @@ class vistaRegistro extends StatelessWidget {
         email: tecUsername.text,
         password: tecPassword.text,
       );
+
+      Navigator.of(_context).popAndPushNamed('/vistalogin');
+
     } on FirebaseAuthException catch (e) {
       if (e.code == 'weak-password') {
         print('The password provided is too weak.');
