@@ -6,15 +6,15 @@ class A1TextField extends StatelessWidget {
   String labelText;
   TextEditingController tecController;
   bool isPassword;
-  double paddingHorizontal = Checkbox.width;
-  double paddingVertical = 14;
+  double paddingHorizontal;
+  double paddingVertical;
 
   A1TextField ({
-    required this.labelText,
+    this.labelText = "",
     required this.tecController,
-    required this.isPassword,
-    required this.paddingHorizontal,
-    required this.paddingVertical,
+    this.isPassword = false,
+    this.paddingHorizontal= Checkbox.width,
+    this.paddingVertical = 14,
   });
 
   @override

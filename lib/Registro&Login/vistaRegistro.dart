@@ -1,5 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import '../Custom/A1TextField.dart';
 
 class vistaRegistro extends StatelessWidget {
 
@@ -43,48 +44,22 @@ class vistaRegistro extends StatelessWidget {
       Padding(padding: EdgeInsets.symmetric(vertical: 10)),
       Text('ACTIVIDAD 1', style: TextStyle(fontSize: 20, fontFamily: 'Orbitron')),
 
-      Padding(padding: EdgeInsets.symmetric(horizontal: Checkbox.width, vertical: 14),
-        child: Flexible(child: SizedBox (width: 450, child: TextField(
-          controller: tecUsername,
-          decoration: InputDecoration(
-            border: OutlineInputBorder(),
-            filled: true,
-            fillColor: Colors.white,
-            labelText: 'Input Username ACTIVIDAD1',
-          ),
-        ),
-        ),
-        ),
+      A1TextField(
+        tecController: tecUsername,
+        labelText: 'Input Username ACTIVIDAD1',
       ),
 
-      Padding(padding: EdgeInsets.symmetric(horizontal: Checkbox.width, vertical: 14),
-        child: Flexible(child: SizedBox(width: 450, child: TextField(
-          controller: tecPassword,
-          obscureText: true,
-          decoration: InputDecoration(
-            border: OutlineInputBorder(),
-            filled: true,
-            fillColor: Colors.white,
-            labelText: 'Input Password ACTIVIDAD1',
-          ),
-        ),
-        ),
-        ),
+      A1TextField(
+        tecController: tecPassword,
+        isPassword: true,
+        labelText: 'Input Password ACTIVIDAD1',
       ),
 
-      Padding(padding: EdgeInsets.symmetric(horizontal: Checkbox.width, vertical: 14),
-        child: Flexible(child: SizedBox(width: 450, child: TextField(
-          controller: tecRepassword,
-          obscureText: true,
-          decoration: InputDecoration(
-            border: OutlineInputBorder(),
-            filled: true,
-            fillColor: Colors.white,
-            labelText: 'Input Repassword ACTIVIDAD1',
-          ),
-        ),
-        ),
-        ),
+
+      A1TextField(
+        tecController: tecRepassword,
+        isPassword: true,
+        labelText: 'Input Repassword ACTIVIDAD1',
       ),
 
       Row(mainAxisAlignment: MainAxisAlignment.center, crossAxisAlignment: CrossAxisAlignment.center,

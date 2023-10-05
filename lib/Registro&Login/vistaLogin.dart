@@ -1,3 +1,4 @@
+import 'package:actividad1/Custom/A1TextField.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
@@ -39,34 +40,19 @@ class vistaLogin extends StatelessWidget {
       Padding(padding: EdgeInsets.symmetric(vertical: 10)),
       Text('ACTIVIDAD 1', style: TextStyle(fontSize: 20, fontFamily: 'Lobster')),
 
-      Padding(padding: EdgeInsets.symmetric(horizontal: Checkbox.width, vertical: 14),
-        child: Flexible(child: SizedBox (width: 450, child: TextField(
-          controller: tecUsername,
-          decoration: InputDecoration(
-            border: OutlineInputBorder(),
-            filled: true,
-            fillColor: Colors.white,
-            labelText: 'Input Username ACTIVIDAD1',
-          ),
-        ),
-        ),
-        ),
+      A1TextField(
+        tecController: tecUsername,
+        labelText: 'Input Username ACTIVIDAD1',
       ),
 
-      Padding(padding: EdgeInsets.symmetric(horizontal: Checkbox.width, vertical: 14),
-        child: Flexible(child: SizedBox(width: 450, child: TextField(
-          controller: tecPassword,
-          obscureText: true,
-          decoration: InputDecoration(
-            border: OutlineInputBorder(),
-            filled: true,
-            fillColor: Colors.white,
-            labelText: 'Input Password ACTIVIDAD1',
-          ),
-        ),
-        ),
-        ),
+
+      A1TextField(
+        tecController: tecPassword,
+        labelText: 'Input Password ACTIVIDAD1',
+        isPassword: true,
       ),
+
+
 
       Row(mainAxisAlignment: MainAxisAlignment.center, crossAxisAlignment: CrossAxisAlignment.center,
         children: [
