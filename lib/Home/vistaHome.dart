@@ -11,7 +11,8 @@ class vistaHome extends StatefulWidget {
 class _vistaHomeState extends State<vistaHome> {
 
   FirebaseFirestore db = FirebaseFirestore.instance;
-  final List<PublicacionesFS> posts = [];
+  final List<PublicacionesFS> publicaciones = [];
+  bool bIsList = false;
 
   @override
   void initState() {
@@ -19,10 +20,21 @@ class _vistaHomeState extends State<vistaHome> {
     descargarPublicaciones();
   }
 
+  void onBottonMenuPressed(int indice) {
+    setState(() {
+      if(indice == 0){
+        bIsList = true;
+      }
+      else if(indice == 1){
+        bIsList = false;
+      }
+    });
+  }
+
   void descargarPublicaciones() async {
-    CollectionReference<PublicacionesFS> collection = db.collection("Post")
+    CollectionReference<PublicacionesFS> collection = db.collection("Publicaciones")
         .withConverter(fromFirestore: PublicacionesFS.fromFirestore,
-        toFirestore: (PublicacionesFS post, _) => post.toFirestore());
+        toFirestore: (PublicacionesFS publicacionesFS, _) => publicacionesFS.toFirestore());
 
     QuerySnapshot<PublicacionesFS> querySnapshot = await collection.get();
     for (int i = 0; i < querySnapshot.docs.length; i++) {
@@ -34,28 +46,27 @@ class _vistaHomeState extends State<vistaHome> {
 
   @override
   Widget build(BuildContext context) {
-
-    Column columna = Column(children : [
-      Padding(padding: EdgeInsets.symmetric(vertical: 15),
-          child: Text('¡Bienvenido al Home!',
-              style: TextStyle(fontSize: 22))
-      ),
-    ]
+    return Scaffold(
+        appBar: AppBar(title: Text('Home',
+            style: TextStyle(fontFamily: 'DelaGothicOne')),),
+      body: Center(
+            child: listaOCelda(bIsList),
+          ),
+      bottomNavigationBar: BottomMenu(evento: onBottonMenuPressed),
     );
-
-    AppBar appBar = AppBar(
-      title: Text('Home', style: TextStyle(fontFamily: 'DelaGothicOne')),
-      centerTitle: true,
-      backgroundColor: Colors.amber,
-      foregroundColor: Colors.deepOrange,
-    );
-
-    Scaffold scaf = Scaffold(
-      body: columna,
-      backgroundColor: Colors.lightGreen,
-      appBar: appBar,
-    );
-
-    return scaf;
   }
+
+  Widget? creadorDeListaPublicacion(BuildContext context, int index) {
+    return PostCellView(sText: posts[index].titulo,
+      dFontSize: 60,
+      iColorCode: 0,
+    );
+  }
+
+  Widget? creadorDeCeldaPublicacion(BuildContext context, int index) {
+    return PostGridCellView(
+      post: posts,
+    );
+  }
+
 }

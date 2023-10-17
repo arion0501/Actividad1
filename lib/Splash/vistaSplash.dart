@@ -30,7 +30,7 @@ class _vistaSplashState extends State<vistaSplash> {
       DocumentReference<UsuariosFS> reference = fb.collection('Usuarios')
           .doc(uidUser)
           .withConverter(fromFirestore: UsuariosFS.fromFirestore,
-          toFirestore: (UsuariosFS usuario, _) => usuario.toFirestore());
+          toFirestore: (UsuariosFS usuariosFS, _) => usuariosFS.toFirestore());
 
       DocumentSnapshot<UsuariosFS> docSnap = await reference.get();
       UsuariosFS usuario = docSnap.data()!;
