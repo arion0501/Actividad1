@@ -13,7 +13,7 @@ class vistaHome extends StatefulWidget {
 
 class _vistaHomeState extends State<vistaHome> {
 
-  FirebaseFirestore db = FirebaseFirestore.instance;
+  FirebaseFirestore fb = FirebaseFirestore.instance;
   final List<PublicacionesFS> publicaciones = [];
   bool bIsList = false;
 
@@ -35,7 +35,7 @@ class _vistaHomeState extends State<vistaHome> {
   }
 
   void descargarPublicaciones() async {
-    CollectionReference<PublicacionesFS> collection = db.collection("Publicaciones")
+    CollectionReference<PublicacionesFS> collection = fb.collection("Publicaciones")
         .withConverter(fromFirestore: PublicacionesFS.fromFirestore,
         toFirestore: (PublicacionesFS publicacionesFS, _) => publicacionesFS.toFirestore());
 
@@ -51,7 +51,7 @@ class _vistaHomeState extends State<vistaHome> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(title: Text('Home',
-          style: TextStyle(fontFamily: 'DelaGothicOne')),),
+          style: TextStyle(fontFamily: 'DelaGothicOne'),),),
       body: Center(
         child: listaOCelda(bIsList),
       ),
