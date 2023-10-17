@@ -1,4 +1,5 @@
 import 'package:actividad1/Custom/VistaGridCelda.dart';
+import 'package:actividad1/Custom/menuBotones.dart';
 import 'package:actividad1/Custom/vistaLista.dart';
 import 'package:actividad1/ObjetosFirestore/PublicacionesFS.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
@@ -54,7 +55,7 @@ class _vistaHomeState extends State<vistaHome> {
       body: Center(
         child: listaOCelda(bIsList),
       ),
-      bottomNavigationBar: BottomMenu(evento: onBottonMenuPressed),
+      bottomNavigationBar: menuBotones(evento: onBottonMenuPressed),
     );
   }
 
