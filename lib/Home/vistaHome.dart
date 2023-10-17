@@ -1,32 +1,45 @@
+import 'package:actividad1/ObjetosFirestore/PublicacionesFS.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 
-class vistaHome extends StatelessWidget {
+class vistaHome extends StatefulWidget {
 
-  late BuildContext _context;
+  @override
+  State<vistaHome> createState() => _vistaHomeState();
+}
 
-  void onClickVolver(){
-    Navigator.of(_context).popAndPushNamed('/vistalogin');
+class _vistaHomeState extends State<vistaHome> {
+
+  FirebaseFirestore db = FirebaseFirestore.instance;
+  final List<PublicacionesFS> posts = [];
+
+  @override
+  void initState() {
+    super.initState();
+    descargarPublicaciones();
+  }
+
+  void descargarPublicaciones() async {
+    CollectionReference<PublicacionesFS> collection = db.collection("Post")
+        .withConverter(fromFirestore: PublicacionesFS.fromFirestore,
+        toFirestore: (PublicacionesFS post, _) => post.toFirestore());
+
+    QuerySnapshot<PublicacionesFS> querySnapshot = await collection.get();
+    for (int i = 0; i < querySnapshot.docs.length; i++) {
+      setState(() {
+        posts.add(querySnapshot.docs[i].data());
+      });
+    }
   }
 
   @override
   Widget build(BuildContext context) {
-    _context = context;
 
     Column columna = Column(children : [
-
       Padding(padding: EdgeInsets.symmetric(vertical: 15),
           child: Text('¡Bienvenido al Home!',
               style: TextStyle(fontSize: 22))
       ),
-
-      Row(mainAxisAlignment: MainAxisAlignment.center, crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
-            TextButton(onPressed: onClickVolver,
-                style: TextButton.styleFrom(foregroundColor: Colors.black),
-                child: Text('Volver',
-                    style: TextStyle(fontFamily: 'DancingScript', fontSize: 20))),
-          ]
-      )
     ]
     );
 
