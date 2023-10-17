@@ -24,7 +24,7 @@ class vistaHome extends StatelessWidget {
             TextButton(onPressed: onClickVolver,
                 style: TextButton.styleFrom(foregroundColor: Colors.black),
                 child: Text('Volver',
-                    style: TextStyle(fontFamily: 'DancingScript'))),
+                    style: TextStyle(fontFamily: 'DancingScript', fontSize: 20))),
           ]
       )
     ]
