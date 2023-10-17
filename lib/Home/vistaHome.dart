@@ -1,4 +1,5 @@
 import 'package:actividad1/Custom/VistaGridCelda.dart';
+import 'package:actividad1/Custom/vistaLista.dart';
 import 'package:actividad1/ObjetosFirestore/PublicacionesFS.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
@@ -40,7 +41,7 @@ class _vistaHomeState extends State<vistaHome> {
     QuerySnapshot<PublicacionesFS> querySnapshot = await collection.get();
     for (int i = 0; i < querySnapshot.docs.length; i++) {
       setState(() {
-        posts.add(querySnapshot.docs[i].data());
+        publicaciones.add(querySnapshot.docs[i].data());
       });
     }
   }
@@ -48,19 +49,38 @@ class _vistaHomeState extends State<vistaHome> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(title: Text('Home',
-            style: TextStyle(fontFamily: 'DelaGothicOne')),),
+      appBar: AppBar(title: Text('Home',
+          style: TextStyle(fontFamily: 'DelaGothicOne')),),
       body: Center(
-            child: listaOCelda(bIsList),
-          ),
+        child: listaOCelda(bIsList),
+      ),
       bottomNavigationBar: BottomMenu(evento: onBottonMenuPressed),
     );
   }
 
+  Widget? listaOCelda(bool isList) {
+    if (isList) {
+      return ListView.separated(
+        padding: EdgeInsets.all(8),
+        itemCount: publicaciones.length,
+        itemBuilder: creadorDeListaPublicacion,
+        separatorBuilder: separadorLista,
+      );
+    }
+    else {
+      return creadorDeCeldaPublicacion(context, publicaciones.length);
+      /*GridView.builder(
+          gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+              crossAxisCount: 5),
+          itemCount: posts.length,
+          itemBuilder: creadorDeItemMatriz*/
+    }
+  }
+
   Widget? creadorDeListaPublicacion(BuildContext context, int index) {
-    return PostCellView(sText: posts[index].titulo,
-      dFontSize: 60,
-      iColorCode: 0,
+    return vistaLista(sTexto: publicaciones[index].titulo,
+      dTamanyoFuente: 60,
+      iCodigoColor: 0,
     );
   }
 
@@ -70,4 +90,7 @@ class _vistaHomeState extends State<vistaHome> {
     );
   }
 
+  Widget separadorLista(BuildContext context, int index) {
+    return Divider();
+  }
 }
