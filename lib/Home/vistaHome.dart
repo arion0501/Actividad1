@@ -1,3 +1,4 @@
+import 'package:actividad1/Custom/VistaGridCelda.dart';
 import 'package:actividad1/ObjetosFirestore/PublicacionesFS.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
@@ -64,8 +65,8 @@ class _vistaHomeState extends State<vistaHome> {
   }
 
   Widget? creadorDeCeldaPublicacion(BuildContext context, int index) {
-    return PostGridCellView(
-      post: posts,
+    return vistaGridCelda(
+      publicaciones: publicaciones,
     );
   }
 
