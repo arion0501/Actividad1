@@ -40,14 +40,14 @@ class _vistaSplashState extends State<vistaSplash> {
         print("edad login user: " + usuario.edad.toString());
         print("peso login user: " + usuario.peso.toString());
         print("color ojos login user: " + usuario.colorOjos);
-        Navigator.of(context).popAndPushNamed("/homeview");
+        Navigator.of(context).popAndPushNamed("/vistahome");
       }
       else {
-        Navigator.of(context).popAndPushNamed('perfilview');
+        Navigator.of(context).popAndPushNamed('/vistaperfil');
       }
     }
     else
-      Navigator.of(context).popAndPushNamed("/loginview");
+      Navigator.of(context).popAndPushNamed("/vistalogin");
   }
 
   @override
