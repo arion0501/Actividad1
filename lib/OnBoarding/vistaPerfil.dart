@@ -26,21 +26,22 @@ class vistaPerfil extends StatelessWidget {
     String uidUsuario = FirebaseAuth.instance.currentUser!.uid;
     await fb.collection("Usuarios").doc(uidUsuario).set(usuario.toFirestore());
 
-    Navigator.of(_context).popAndPushNamed('/vistaHome');
+    Navigator.of(_context).popAndPushNamed('/vistahome');
   }
 
   @override
   Widget build(BuildContext context) {
 
     _context = context;
+
     return Scaffold(
-      backgroundColor: Colors.indigoAccent,
+      backgroundColor: Colors.lightGreen,
 
       appBar: AppBar(
         title: const Text('Perfil'),
-        backgroundColor: Colors.pinkAccent,
+        backgroundColor: Colors.deepOrange,
         centerTitle: true,
-        shadowColor: Colors.yellow,
+        shadowColor: Colors.amber,
       ),
 
       // drawer: Image.asset('resources/logo_kyty.png'),

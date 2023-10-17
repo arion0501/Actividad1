@@ -22,7 +22,7 @@ class _vistaSplashState extends State<vistaSplash> {
   }
 
   void checkSesion() async {
-    await Future.delayed(Duration(seconds: 4));
+    await Future.delayed(Duration(seconds: 3));
 
     if (FirebaseAuth.instance.currentUser != null) {
       String uidUser = FirebaseAuth.instance.currentUser!.uid;
@@ -40,6 +40,7 @@ class _vistaSplashState extends State<vistaSplash> {
         print("edad login user: " + usuario.edad.toString());
         print("peso login user: " + usuario.peso.toString());
         print("color ojos login user: " + usuario.colorOjos);
+
         Navigator.of(context).popAndPushNamed("/vistahome");
       }
       else {
@@ -52,9 +53,10 @@ class _vistaSplashState extends State<vistaSplash> {
 
   @override
   Widget build(BuildContext context) {
+
     Column column = Column(
       children: [
-        Image.asset('Recursos/aiGenerated.png', width: 300, height: 250),
+        Image.asset('Recursos/aiGenerated.png', width: 400, height: 400),
         Padding(padding: EdgeInsets.symmetric(vertical: 10)),
         CircularProgressIndicator(),
       ],
