@@ -1,7 +1,7 @@
 import 'package:actividad1/Home/vistaHome.dart';
-import 'package:actividad1/Registro&Login/vistaLogin.dart';
 import 'package:flutter/material.dart';
-import 'Registro&Login/vistaRegistro.dart';
+import 'OnBoarding/vistaLogin.dart';
+import 'OnBoarding/vistaRegistro.dart';
 
 class Actividad1 extends StatelessWidget {
 

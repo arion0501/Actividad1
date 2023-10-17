@@ -22,7 +22,7 @@ class vistaPerfil extends StatelessWidget {
     UsuariosFS usuario = new UsuariosFS(nombre: tecNombre.text,
         edad: int.parse(tecEdad.text), peso: double.parse(tecPeso.text),
         colorOjos: tecColorOjos.text);
-    
+
     String uidUsuario = FirebaseAuth.instance.currentUser!.uid;
     await fb.collection("Usuarios").doc(uidUsuario).set(usuario.toFirestore());
 
@@ -33,9 +33,91 @@ class vistaPerfil extends StatelessWidget {
   Widget build(BuildContext context) {
 
     _context = context;
+    return Scaffold(
+      backgroundColor: Colors.indigoAccent,
 
-    throw UnimplementedError();
+      appBar: AppBar(
+        title: const Text('Perfil'),
+        backgroundColor: Colors.pinkAccent,
+        centerTitle: true,
+        shadowColor: Colors.yellow,
+      ),
+
+      // drawer: Image.asset('resources/logo_kyty.png'),
+
+      body: Column(
+
+        // mainAxisAlignment: MainAxisAlignment.center,
+
+        children: [
+          Padding(padding: EdgeInsets.symmetric(vertical: 10)),
+          Text("Bienvenido a tu perfil", style: TextStyle(fontSize: 25)),
+
+          Padding(
+            padding: EdgeInsets.symmetric(horizontal: Checkbox.width, vertical: 14),
+            child: Flexible(child: SizedBox(width: 400, child: TextField(
+              // textAlign: TextAlign.center,
+              controller: tecNombre,
+              decoration: InputDecoration(
+                  border: OutlineInputBorder(),
+                  hintText: 'Escribe tu nombre',
+                  fillColor: Colors.white,
+                  filled: true
+              ),
+            ),
+            ),
+            ),
+          ),
+
+          Padding(padding: EdgeInsets.symmetric(horizontal: Checkbox.width, vertical: 14),
+            child: Flexible(child: SizedBox(width: 400, child: TextField(
+              controller: tecEdad,
+              decoration: InputDecoration(
+                  border: OutlineInputBorder(),
+                  hintText: 'Escribe tu edad',
+                  fillColor: Colors.white,
+                  filled: true
+              ),
+            ),
+            ),
+            ),
+          ),
+
+          Padding(padding: EdgeInsets.symmetric(horizontal: Checkbox.width, vertical: 14),
+            child: Flexible(child: SizedBox(width: 400, child: TextField(
+              controller: tecPeso,
+              decoration: InputDecoration(
+                  border: OutlineInputBorder(),
+                  hintText: 'Escribe tu peso',
+                  fillColor: Colors.white,
+                  filled: true
+              ),
+            ),
+            ),
+            ),
+          ),
+
+          Padding(padding: EdgeInsets.symmetric(horizontal: Checkbox.width, vertical: 14),
+            child: Flexible(child: SizedBox(width: 400, child: TextField(
+              controller: tecColorOjos,
+              decoration: InputDecoration(
+                  border: OutlineInputBorder(),
+                  hintText: 'Escribe tu color de ojos',
+                  fillColor: Colors.white,
+                  filled: true
+              ),
+            ),
+            ),
+            ),
+          ),
+
+          Row(mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              TextButton(onPressed: onClickAceptar, child: Text("Aceptar"),),
+              TextButton(onPressed: onClickCancelar, child: Text("Cancelar"),)
+            ],)
+        ], // children
+      ),
+    );
   }
-
-
 }
