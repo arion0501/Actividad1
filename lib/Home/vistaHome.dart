@@ -71,11 +71,6 @@ class _vistaHomeState extends State<vistaHome> {
     }
     else {
       return creadorDeCeldaPublicacion(context, publicaciones.length);
-      /*GridView.builder(
-          gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-              crossAxisCount: 5),
-          itemCount: posts.length,
-          itemBuilder: creadorDeItemMatriz*/
     }
   }
 

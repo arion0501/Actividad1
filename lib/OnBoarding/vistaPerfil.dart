@@ -44,12 +44,7 @@ class vistaPerfil extends StatelessWidget {
         shadowColor: Colors.amber,
       ),
 
-      // drawer: Image.asset('resources/logo_kyty.png'),
-
       body: Column(
-
-        // mainAxisAlignment: MainAxisAlignment.center,
-
         children: [
           Padding(padding: EdgeInsets.symmetric(vertical: 10)),
           Text("Bienvenido a tu perfil", style: TextStyle(fontSize: 25)),
@@ -114,8 +109,8 @@ class vistaPerfil extends StatelessWidget {
 
           Row(mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              TextButton(onPressed: onClickAceptar, child: Text("Aceptar"),),
-              TextButton(onPressed: onClickCancelar, child: Text("Cancelar"),)
+              TextButton(onPressed: onClickAceptar, style: TextButton.styleFrom(foregroundColor: Colors.black), child: Text("Aceptar"),),
+              TextButton(onPressed: onClickCancelar, style: TextButton.styleFrom(foregroundColor: Colors.black), child: Text("Cancelar"),)
             ],)
         ], // children
       ),

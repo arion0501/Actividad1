@@ -16,15 +16,15 @@ class PublicacionesFS {
       ) {
     final data = snapshot.data();
     return PublicacionesFS(
-      titulo: data?['Titulo'],
-      cuerpo: data?['Cuerpo'],
+      titulo: data?['titulo'],
+      cuerpo: data?['cuerpo'],
     );
   }
 
   Map<String, dynamic> toFirestore() {
     return {
-      if (titulo != null) "Titulo": titulo,
-      if (cuerpo != null) "Cuerpo": cuerpo
+      if (titulo != null) "titulo": titulo,
+      if (cuerpo != null) "cuerpo": cuerpo
     };
   }
 }

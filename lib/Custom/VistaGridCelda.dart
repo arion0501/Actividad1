@@ -22,11 +22,11 @@ class vistaGridCelda extends StatelessWidget{
         itemBuilder: (context, index) {
 
           return Container(
-            color: Colors.indigoAccent,
+            color: Colors.green,
             child: Center(
               child: Text(
                 publicaciones[index].titulo,
-                style: TextStyle(fontSize: 20, color: Colors.orange),
+                style: TextStyle(fontSize: 20, color: Colors.amber),
               ),
             ),
           );

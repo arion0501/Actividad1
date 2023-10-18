@@ -40,7 +40,9 @@ class vistaLogin extends StatelessWidget {
         }
       }
 
-      Navigator.of(_context).popAndPushNamed('/vistahome');
+      else{
+        Navigator.of(_context).popAndPushNamed('/vistaperfil');
+      }
 
     } on FirebaseAuthException catch (e) {
       if (e.code == 'user-not-found') {
