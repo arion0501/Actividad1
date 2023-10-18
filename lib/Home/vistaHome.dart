@@ -5,6 +5,7 @@ import 'package:actividad1/ObjetosFirestore/PublicacionesFS.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 
+
 class vistaHome extends StatefulWidget {
 
   @override
