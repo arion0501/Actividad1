@@ -23,7 +23,7 @@ class DrawerCustom extends StatelessWidget {
           ),
           ListTile(
             title: const Text('1'),
-            leading: Image.asset('resources/aiGenerated.png',
+            leading: Image.asset('Recursos/aiGenerated.png',
                 width: 45,
                 height: 70),
             onTap: () {
