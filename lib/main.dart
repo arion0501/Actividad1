@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'SingleTone/DataHolder.dart';
 import 'firebase_options.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'Actividad1.dart';
@@ -10,6 +11,7 @@ void main() async{
     options: DefaultFirebaseOptions.currentPlatform,
   );
 
+  DataHolder().initDataHolder();
   runApp(Actividad1());
 }
 
