@@ -1,9 +1,13 @@
+import 'package:actividad1/Custom/FondoMenu.dart';
 import 'package:actividad1/Custom/VistaGridCelda.dart';
-import 'package:actividad1/Custom/MenuBotones.dart';
 import 'package:actividad1/Custom/VistaLista.dart';
 import 'package:actividad1/ObjetosFirestore/PublicacionesFS.dart';
+import 'package:actividad1/OnBoarding/vistaLogin.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import '../Custom/DrawerCustom.dart';
+import '../SingleTone/DataHolder.dart';
 
 
 class vistaHome extends StatefulWidget {
@@ -22,6 +26,21 @@ class _vistaHomeState extends State<vistaHome> {
   void initState() {
     super.initState();
     descargarPublicaciones();
+  }
+
+  void fHomeViewDrawerOntap(int indice) {
+    if(indice == 0){
+      FirebaseAuth.instance.signOut();
+      //Navigator.of(context).pop();
+      //Navigator.of(context).popAndPushNamed("/loginview");
+      Navigator.of(context).pushAndRemoveUntil (
+        MaterialPageRoute (builder: (BuildContext context) =>  vistaLogin()),
+        ModalRoute.withName('/vistalogin'),
+      );
+    }
+    else if(indice == 1){
+
+    }
   }
 
   void onBottonMenuPressed(int indice) {
@@ -51,12 +70,19 @@ class _vistaHomeState extends State<vistaHome> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text('Home',
-          style: TextStyle(fontFamily: 'DelaGothicOne'),),),
+      appBar: AppBar(title: Text("Actividad1"),),
       body: Center(
         child: listaOCelda(bIsList),
       ),
-      bottomNavigationBar: menuBotones(evento: onBottonMenuPressed),
+      bottomNavigationBar: FondoMenu(evento: onBottonMenuPressed),
+      drawer: DrawerCustom(onItemTap: fHomeViewDrawerOntap),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          Navigator.of(context).pushNamed("/vistacreapublicacion");
+        },
+        child: Icon(Icons.add),
+      ),
+      floatingActionButtonLocation: FloatingActionButtonLocation.miniEndDocked,
     );
   }
 
@@ -74,10 +100,17 @@ class _vistaHomeState extends State<vistaHome> {
     }
   }
 
+  void onItemListaClicked(int index) {
+    DataHolder().selectedPost = publicaciones[index];
+    DataHolder().saveSelectedPostInCache();
+    Navigator.of(context).pushNamed('/vistapublicacion');
+  }
+
   Widget? creadorDeListaPublicacion(BuildContext context, int index) {
     return vistaLista(sTexto: publicaciones[index].titulo,
-      dTamanyoFuente: 60,
-      iCodigoColor: 0,
+      dTamanyoFuente: 30,
+      iCodigoColor: Colors.pink,
+      onItemListClickedFun: onItemListaClicked,
     );
   }
 

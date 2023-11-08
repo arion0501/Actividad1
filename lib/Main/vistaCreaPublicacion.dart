@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import '../Custom/A1TextField.dart';
 import '../SingleTone/DataHolder.dart';
 
-class PostCreateView extends StatelessWidget {
+class vistaCreaPublicacion extends StatelessWidget {
 
   FirebaseFirestore db = FirebaseFirestore.instance;
   TextEditingController tecTitulo = TextEditingController();
@@ -23,7 +23,7 @@ class PostCreateView extends StatelessWidget {
           A1TextField(tecController: tecCuerpo,
               labelText:'Escribe un cuerpo'),
 
-          Image.asset("resources/logo_kyty.png", width: 65),
+          Image.asset("Recursos/aiGenerated.png", width: 65),
 
           TextButton(onPressed: () {
             PublicacionesFS postNuevo = new PublicacionesFS(
@@ -36,7 +36,7 @@ class PostCreateView extends StatelessWidget {
               toFirestore: (PublicacionesFS post, _) => post.toFirestore(),
             );
             postsRef.add(postNuevo);
-            Navigator.of(context).popAndPushNamed("/homeview");
+            Navigator.of(context).popAndPushNamed("/vistahome");
           },
               child: Text("Postear")
           )
