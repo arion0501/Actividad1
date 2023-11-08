@@ -27,15 +27,11 @@ class vistaCreaPublicacion extends StatelessWidget {
 
           TextButton(onPressed: () {
             PublicacionesFS postNuevo = new PublicacionesFS(
-              titulo: tecTitulo.text,
-              cuerpo: tecCuerpo.text,
-            );
-            CollectionReference<PublicacionesFS> postsRef = db.collection("Post")
-                .withConverter(
-              fromFirestore: PublicacionesFS.fromFirestore,
-              toFirestore: (PublicacionesFS post, _) => post.toFirestore(),
-            );
-            postsRef.add(postNuevo);
+                titulo: tecTitulo.text,
+                cuerpo: tecCuerpo.text);
+
+            DataHolder().crearPublicacionEnFB(postNuevo);
+
             Navigator.of(context).popAndPushNamed("/vistahome");
           },
               child: Text("Postear")
