@@ -111,12 +111,14 @@ class _vistaHomeState extends State<vistaHome> {
       dTamanyoFuente: 30,
       iCodigoColor: Colors.pink,
       onItemListClickedFun: onItemListaClicked,
+      iPosicion: index,
     );
   }
 
   Widget? creadorDeCeldaPublicacion(BuildContext context, int index) {
     return vistaGridCelda(
       publicaciones: publicaciones,
+      onItemListClickedFun: onItemListaClicked
     );
   }
 
