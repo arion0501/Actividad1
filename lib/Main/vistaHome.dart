@@ -1,6 +1,6 @@
 import 'package:actividad1/Custom/VistaGridCelda.dart';
-import 'package:actividad1/Custom/menuBotones.dart';
-import 'package:actividad1/Custom/vistaLista.dart';
+import 'package:actividad1/Custom/MenuBotones.dart';
+import 'package:actividad1/Custom/VistaLista.dart';
 import 'package:actividad1/ObjetosFirestore/PublicacionesFS.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
