@@ -4,9 +4,11 @@ import 'package:flutter/material.dart';
 class vistaGridCelda extends StatelessWidget{
 
   final List<PublicacionesFS> publicaciones;
+  final Function(int indice)? onItemListClickedFun;
 
   const vistaGridCelda({super.key,
-    required this.publicaciones
+    required this.publicaciones,
+    required this.onItemListClickedFun
   });
 
   @override
@@ -21,14 +23,19 @@ class vistaGridCelda extends StatelessWidget{
         itemCount: publicaciones.length,
         itemBuilder: (context, index) {
 
-          return Container(
-            color: Colors.green,
-            child: Center(
-              child: Text(
-                publicaciones[index].titulo,
-                style: TextStyle(fontSize: 20, color: Colors.amber),
+          return InkWell(
+            child: Container(
+              color: Colors.indigoAccent,
+              child: Center(
+                child: Text(
+                  publicaciones[index].titulo,
+                  style: TextStyle(fontSize: 20, color: Colors.orange),
+                ),
               ),
             ),
+            onTap: () {
+              onItemListClickedFun!(index);
+            },
           );
         }
     );
