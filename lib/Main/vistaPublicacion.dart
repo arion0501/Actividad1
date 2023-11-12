@@ -8,13 +8,20 @@ class vistaPublicacion extends StatefulWidget {
   State<vistaPublicacion> createState() => _PostViewState();
 }
 class _PostViewState extends State<vistaPublicacion> {
-  late PublicacionesFS selectedPost;
+  PublicacionesFS _datosPublicacion = PublicacionesFS(titulo: "titulo", cuerpo: "cuerpo");
+
 
   @override
-  void initState() async{
+  void initState() {
     super.initState();
-    setState(() async {
-      selectedPost = await DataHolder().initCachedFbPost();
+    cargarPostGuardadoEnCache();
+  }
+
+  void cargarPostGuardadoEnCache() async {
+    var temp1 = await DataHolder().initCachedFbPost();
+
+    setState(() {
+      _datosPublicacion = temp1!;
     });
   }
 
@@ -24,9 +31,9 @@ class _PostViewState extends State<vistaPublicacion> {
       appBar: AppBar(title: Text(DataHolder().sNombre)),
       body: Column(
         children: [
-          Text(DataHolder().selectedPost.titulo),
-          Text(DataHolder().selectedPost.cuerpo),
-          Image.asset("Recursos/aiGenerated.png", width: 70),
+          Text(_datosPublicacion.titulo),
+          Text(_datosPublicacion.cuerpo),
+          Image.asset("Recursos/aiGenerated.png", width: 70, height: 70),
           TextButton(onPressed: null, child: Text("Like"))
         ],
       ),
