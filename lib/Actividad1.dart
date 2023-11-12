@@ -1,3 +1,4 @@
+import 'package:actividad1/OnBoarding/vistaGestion.dart';
 import 'package:actividad1/OnBoarding/vistaPerfil.dart';
 import 'package:actividad1/Splash/vistaSplash.dart';
 import 'package:flutter/material.dart';
@@ -41,8 +42,9 @@ class Actividad1 extends StatelessWidget {
           '/vistasplash': (context) => vistaSplash(),
           '/vistapublicacion': (context) => vistaPublicacion(),
           '/vistacreapublicacion': (context) => vistaCreaPublicacion(),
+          '/vistagestion': (context) => vistaGestion(),
         },
-        initialRoute: '/vistalogin',
+        initialRoute: '/vistagestion',
       );
     }
     return materialApp;
