@@ -1,7 +1,6 @@
 import 'package:actividad1/ObjetosFirestore/PublicacionesFS.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-
 import 'PlatformAdmin.dart';
 
 class DataHolder {
@@ -16,11 +15,12 @@ class DataHolder {
 
   DataHolder._internal() {
     platformAdmin = PlatformAdmin();
+    initCachedFbPost();
   }
 
   void initDataHolder() {
-    sPostTitulo = "Titulo del Post";
-    initCachedFbPost();
+    /*sPostTitulo = "Titulo del Post";
+    initCachedFbPost();*/
   }
 
   factory DataHolder(){
@@ -37,15 +37,16 @@ class DataHolder {
   }
 
   void saveSelectedPostInCache() async {
-    SharedPreferences prefs = await SharedPreferences.getInstance();
-    prefs.setString('titulo', selectedPost.titulo);
-    prefs.setString('cuerpo', selectedPost.cuerpo);
+    if(selectedPost != null) {
+      SharedPreferences prefs = await SharedPreferences.getInstance();
+      prefs.setString('titulo', selectedPost.titulo);
+      prefs.setString('cuerpo', selectedPost.cuerpo);
+    }
   }
 
   Future<PublicacionesFS> initCachedFbPost() async {
-    if(selectedPost != null) {
-      return selectedPost;
-    }
+    if(selectedPost != null) return selectedPost;
+
     SharedPreferences prefs = await SharedPreferences.getInstance();
 
     String? fbpost_titulo = prefs.getString('titulo');
