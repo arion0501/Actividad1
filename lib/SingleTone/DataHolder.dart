@@ -2,6 +2,8 @@ import 'package:actividad1/ObjetosFirestore/PublicacionesFS.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
+import 'PlatformAdmin.dart';
+
 class DataHolder {
 
   static final DataHolder _dataHolder = new DataHolder._internal();
@@ -10,9 +12,10 @@ class DataHolder {
   String sNombre = "Actividad 1 DataHolder";
   late String sPostTitulo;
   late PublicacionesFS selectedPost;
+  late PlatformAdmin platformAdmin;
 
   DataHolder._internal() {
-
+    platformAdmin = PlatformAdmin();
   }
 
   void initDataHolder() {

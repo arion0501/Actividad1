@@ -10,13 +10,13 @@ import '../Custom/DrawerCustom.dart';
 import '../SingleTone/DataHolder.dart';
 
 
-class vistaHome extends StatefulWidget {
+class vistaHome2 extends StatefulWidget {
 
   @override
-  State<vistaHome> createState() => _vistaHomeState();
+  State<vistaHome2> createState() => _vistaHomeState();
 }
 
-class _vistaHomeState extends State<vistaHome> {
+class _vistaHomeState extends State<vistaHome2> {
 
   FirebaseFirestore fb = FirebaseFirestore.instance;
   final List<PublicacionesFS> publicaciones = [];
