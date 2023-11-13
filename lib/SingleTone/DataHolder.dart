@@ -1,12 +1,15 @@
 import 'package:actividad1/ObjetosFirestore/PublicacionesFS.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'GeolocAdmin.dart';
 import 'PlatformAdmin.dart';
 
 class DataHolder {
 
   static final DataHolder _dataHolder = new DataHolder._internal();
   FirebaseFirestore fs = FirebaseFirestore.instance;
+  GeolocAdmin geolocAdmin = GeolocAdmin();
+
 
   String sNombre = "Actividad 1 DataHolder";
   late String sPostTitulo;

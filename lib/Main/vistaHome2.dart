@@ -6,6 +6,7 @@ import 'package:actividad1/OnBoarding/vistaLogin.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:geolocator/geolocator.dart';
 import '../Custom/DrawerCustom.dart';
 import '../SingleTone/DataHolder.dart';
 
@@ -26,6 +27,13 @@ class _vistaHomeState extends State<vistaHome2> {
   void initState() {
     super.initState();
     descargarPublicaciones();
+    loadGeolocator();
+  }
+
+  void loadGeolocator() async {
+    Position pos = await DataHolder().geolocAdmin.determinePosition();
+    print('--->>' + pos.toString());
+    DataHolder().geolocAdmin.registrarCambiosLoc();
   }
 
   void fHomeViewDrawerOntap(int indice) {

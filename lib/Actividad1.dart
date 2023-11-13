@@ -29,7 +29,7 @@ class Actividad1 extends StatelessWidget {
           '/vistapublicacion': (context) => vistaPublicacion(),
           '/vistacreapublicacion': (context) => vistaCreaPublicacion(),
         },
-        initialRoute: '/vistahome',
+        initialRoute: '/vistalogin',
       );
     }
 
