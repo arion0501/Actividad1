@@ -7,6 +7,7 @@ import 'Main/vistaHome.dart';
 import 'Main/vistaHome2.dart';
 import 'Main/vistaPublicacion.dart';
 import 'OnBoarding/vistaLogin.dart';
+import 'OnBoarding/vistaLoginMovil.dart';
 import 'OnBoarding/vistaRegistro.dart';
 import 'SingleTone/DataHolder.dart';
 
@@ -20,7 +21,7 @@ class Actividad1 extends StatelessWidget {
         DataHolder().platformAdmin.isIOSPlatform()) {
       materialApp = MaterialApp(title: "Actividad 1",
         routes: {
-          '/vistalogin': (context) => vistaLogin(),
+          '/vistalogin': (context) => vistaLoginMovil(),
           '/vistaregistro': (context) => vistaRegistro(),
           '/vistahome': (context) => vistaHome2(),
           '/vistaperfil': (context) => vistaPerfil(),
