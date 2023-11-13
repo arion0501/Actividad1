@@ -1,10 +1,22 @@
-import 'package:actividad1/Custom/A1TextField.dart';
-import 'package:actividad1/ObjetosFirestore/UsuariosFS.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
-class vistaGestion extends StatelessWidget {
+class vistaGestion extends StatefulWidget {
+
+  @override
+  State<vistaGestion> createState() => _vistaGestionState();
+}
+
+class _vistaGestionState extends State<vistaGestion> {
+
+  void checkSession() async {
+    await Future.delayed(Duration(seconds: 3));
+    Navigator.of(context).popAndPushNamed("/vistasplash");
+  }
+
+  @override
+  void initState() {
+    checkSession();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -14,11 +26,8 @@ class vistaGestion extends StatelessWidget {
       Padding(padding: EdgeInsets.symmetric(vertical: 10)),
       Text('ACTIVIDAD 1', style: TextStyle(fontSize: 20, fontFamily: 'Lobster')),
 
-
-
       Row(mainAxisAlignment: MainAxisAlignment.center, crossAxisAlignment: CrossAxisAlignment.center,
         children: [
-
         ],)
     ],
         mainAxisAlignment: MainAxisAlignment.center

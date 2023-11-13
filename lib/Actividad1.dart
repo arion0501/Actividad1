@@ -42,7 +42,7 @@ class Actividad1 extends StatelessWidget {
           '/vistasplash': (context) => vistaSplash(),
           '/vistapublicacion': (context) => vistaPublicacion(),
           '/vistacreapublicacion': (context) => vistaCreaPublicacion(),
-          '/vistagestion': (context) => vistaGestion(),
+          '/vistagestion': (context) => vistaGestion()
         },
         initialRoute: '/vistagestion',
       );
