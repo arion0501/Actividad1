@@ -1,4 +1,5 @@
 import 'package:actividad1/ObjetosFirestore/UsuariosFS.dart';
+import 'package:actividad1/SingleTone/PlatformAdmin.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
@@ -54,9 +55,11 @@ class _vistaSplashState extends State<vistaSplash> {
   @override
   Widget build(BuildContext context) {
 
+    String ruta = "assets/" + PlatformAdmin().getPlatformAdmin() + "/aiGenerated.png";
+
     Column column = Column(
       children: [
-        Image.asset('Recursos/aiGenerated.png', width: 400, height: 400),
+        Image.asset(ruta, width: 400, height: 400),
         Padding(padding: EdgeInsets.symmetric(vertical: 10)),
         CircularProgressIndicator(),
       ],
