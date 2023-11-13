@@ -36,13 +36,13 @@ class _PhoneLoginViewState extends State<vistaLoginMovil> {
     // Sign the user in (or link) with the credential
     await FirebaseAuth.instance.signInWithCredential(credential);
 
-    Navigator.of(context).popAndPushNamed('/homeview');
+    Navigator.of(context).popAndPushNamed('/vistahome');
   }
 
   void verificacionCompletada(PhoneAuthCredential credencial) async{
     await FirebaseAuth.instance.signInWithCredential(credencial);
 
-    Navigator.of(context).popAndPushNamed('/homeview');
+    Navigator.of(context).popAndPushNamed('/vistahome');
   }
 
   void verificacionFallida(FirebaseAuthException excepcion) {

@@ -2,6 +2,7 @@ import 'package:actividad1/OnBoarding/vistaGestion.dart';
 import 'package:actividad1/OnBoarding/vistaPerfil.dart';
 import 'package:actividad1/Splash/vistaSplash.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'Main/vistaCreaPublicacion.dart';
 import 'Main/vistaHome.dart';
 import 'Main/vistaHome2.dart';
@@ -20,6 +21,11 @@ class Actividad1 extends StatelessWidget {
     if(DataHolder().platformAdmin.isAndroidPlatform() ||
         DataHolder().platformAdmin.isIOSPlatform()) {
       materialApp = MaterialApp(title: "Actividad 1",
+        theme: ThemeData(
+          textTheme: GoogleFonts.aldrichTextTheme(
+            Theme.of(context).textTheme,
+          ),
+        ),
         routes: {
           '/vistalogin': (context) => vistaLoginMovil(),
           '/vistaregistro': (context) => vistaRegistro(),
@@ -35,6 +41,11 @@ class Actividad1 extends StatelessWidget {
 
     else if(DataHolder().platformAdmin.isWebPlatform()){
       materialApp = MaterialApp(title: "Actividad 1",
+        theme: ThemeData(
+          textTheme: GoogleFonts.darkerGrotesqueTextTheme(
+            Theme.of(context).textTheme,
+          ),
+        ),
         routes: {
           '/vistalogin': (context) => vistaLogin(),
           '/vistaregistro': (context) => vistaRegistro(),
