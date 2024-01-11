@@ -1,4 +1,4 @@
-import 'package:actividad1/Custom/FondoMenu.dart';
+import 'package:actividad1/Custom/MenuBotones.dart';
 import 'package:actividad1/Custom/VistaGridCelda.dart';
 import 'package:actividad1/Custom/VistaLista.dart';
 import 'package:actividad1/ObjetosFirestore/PublicacionesFS.dart';
@@ -32,15 +32,13 @@ class _vistaHomeState extends State<vistaHome2> {
 
   void loadGeolocator() async {
     Position pos = await DataHolder().geolocAdmin.determinePosition();
-    print('--->>' + pos.toString());
-    DataHolder().geolocAdmin.registrarCambiosLoc();
+    print('--->>$pos');
+    DataHolder().suscribeACambiosGPSUsuario();
   }
 
   void fHomeViewDrawerOntap(int indice) {
     if(indice == 0){
       FirebaseAuth.instance.signOut();
-      //Navigator.of(context).pop();
-      //Navigator.of(context).popAndPushNamed("/loginview");
       Navigator.of(context).pushAndRemoveUntil (
         MaterialPageRoute (builder: (BuildContext context) =>  vistaLogin()),
         ModalRoute.withName('/vistalogin'),
@@ -82,7 +80,7 @@ class _vistaHomeState extends State<vistaHome2> {
       body: Center(
         child: listaOCelda(bIsList),
       ),
-      bottomNavigationBar: FondoMenu(evento: onBottonMenuPressed),
+      bottomNavigationBar: MenuBotones(evento: onBottonMenuPressed),
       drawer: DrawerCustom(onItemTap: fHomeViewDrawerOntap),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
