@@ -21,7 +21,7 @@ class vistaPerfil extends StatelessWidget {
   void onClickAceptar() async {
     UsuariosFS usuario = new UsuariosFS(nombre: tecNombre.text,
         edad: int.parse(tecEdad.text), peso: double.parse(tecPeso.text),
-        colorOjos: tecColorOjos.text);
+        colorOjos: tecColorOjos.text, geoloc: const GeoPoint(0, 0));
 
     String uidUsuario = FirebaseAuth.instance.currentUser!.uid;
     await fb.collection("Usuarios").doc(uidUsuario).set(usuario.toFirestore());

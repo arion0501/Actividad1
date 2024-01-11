@@ -36,7 +36,7 @@ class vistaLogin extends StatelessWidget {
           print("peso login user: " + usuario.peso.toString());
           print("color ojos login user: " + usuario.colorOjos);
 
-          Navigator.of(_context).popAndPushNamed('vistahome');
+          Navigator.of(_context).popAndPushNamed('/vistahome');
         }
       }
 
