@@ -1,7 +1,10 @@
 import 'package:actividad1/ObjetosFirestore/PublicacionesFS.dart';
+import 'package:actividad1/ObjetosFirestore/UsuariosFS.dart';
 import 'package:actividad1/SingleTone/Admin.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:geolocator/geolocator.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'FirebaseAdmin.dart';
 import 'GeolocAdmin.dart';
 import 'PlatformAdmin.dart';
 
@@ -11,6 +14,8 @@ class DataHolder {
   FirebaseFirestore fs = FirebaseFirestore.instance;
   GeolocAdmin geolocAdmin = GeolocAdmin();
   Admin admin = Admin();
+  FirebaseAdmin fbAdmin = FirebaseAdmin();
+  UsuariosFS? usuario;
 
   String sNombre = "Actividad 1 DataHolder";
   late String sPostTitulo;
@@ -64,4 +69,14 @@ class DataHolder {
 
     return selectedPost;
   }
+
+  void suscribeACambiosGPSUsuario () {
+    geolocAdmin.registrarCambiosLoc(posicionDelMovilCambio);
+  }
+
+  void posicionDelMovilCambio(Position? position) {
+    usuario!.geoloc = GeoPoint(position!.latitude, position.longitude);
+    fbAdmin.actualizarPerfilUsuario(usuario!);
+  }
+
 }
