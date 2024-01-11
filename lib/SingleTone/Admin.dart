@@ -17,7 +17,7 @@ class Admin {
     if (response.statusCode == 200) {
       var jsonResponse =
           convert.jsonDecode(response.body) as Map<String, dynamic>;
-      print("MAPA ENTERO: " + jsonResponse.toString());
+      //print("MAPA ENTERO: " + jsonResponse.toString());
 
       var jsonHourly = jsonResponse['hourly'];
       var jsonTimes = jsonHourly['time'];
@@ -35,7 +35,9 @@ class Admin {
   }
 
   Future<Map<String, dynamic>> obtenerUbicacionCliente() async {
-    final apiUrl = 'https://ipinfo.io/json';
+    final apiKey = '13114d2ba29e2b';
+    final apiUrl = 'https://ipinfo.io/json?token=$apiKey';
+
     final response = await http.get(Uri.parse(apiUrl));
 
     if (response.statusCode == 200) {

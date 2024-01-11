@@ -21,6 +21,7 @@ class Actividad1 extends StatelessWidget {
     if(DataHolder().platformAdmin.isAndroidPlatform() ||
         DataHolder().platformAdmin.isIOSPlatform()) {
       materialApp = MaterialApp(title: "Actividad 1",
+        debugShowCheckedModeBanner: false,
         theme: ThemeData(
           textTheme: GoogleFonts.aldrichTextTheme(
             Theme.of(context).textTheme,
@@ -41,6 +42,7 @@ class Actividad1 extends StatelessWidget {
 
     else if(DataHolder().platformAdmin.isWebPlatform()){
       materialApp = MaterialApp(title: "Actividad 1",
+        debugShowCheckedModeBanner: false,
         theme: ThemeData(
           textTheme: GoogleFonts.darkerGrotesqueTextTheme(
             Theme.of(context).textTheme,
@@ -56,7 +58,7 @@ class Actividad1 extends StatelessWidget {
           '/vistacreapublicacion': (context) => vistaCreaPublicacion(),
           '/vistagestion': (context) => vistaGestion()
         },
-        initialRoute: '/vistagestion',
+        initialRoute: '/vistasplash',
       );
     }
     return materialApp;
