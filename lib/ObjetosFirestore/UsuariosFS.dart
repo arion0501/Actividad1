@@ -6,12 +6,14 @@ class UsuariosFS {
   final int edad;
   final double peso;
   final String colorOjos;
+  GeoPoint geoloc;
 
   UsuariosFS({
     required this.nombre,
     required this.edad,
     required this.peso,
-    required this.colorOjos
+    required this.colorOjos,
+    required this.geoloc
   });
 
   factory UsuariosFS.fromFirestore(
@@ -23,16 +25,18 @@ class UsuariosFS {
         nombre: data?['nombre'],
         edad: data?['edad'] != null ? data!['edad'] : 0,
         peso: data?['peso'] != null ? data!['peso'] : 0,
-        colorOjos: data?['colorOjos'] != null ? data!['colorOjos'] : ""
+        colorOjos: data?['colorOjos'] != null ? data!['colorOjos'] : "",
+        geoloc: data?['geoloc'] != null ? data!['geoloc'] : const GeoPoint(0, 0)
     );
   }
 
   Map<String, dynamic> toFirestore() {
     return {
-      if (nombre != null) "nombre": nombre,
-      if (edad != null) "edad": edad,
-      if (peso != null) "peso": peso,
-      if (colorOjos != null) "colorOjos": colorOjos,
+      "nombre": nombre,
+      "edad": edad,
+      "peso": peso,
+      "colorOjos": colorOjos,
+      "geoloc": geoloc,
     };
   }
 }
