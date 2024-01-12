@@ -22,17 +22,15 @@ class DrawerCustom extends StatelessWidget {
 
           ),
           ListTile(
-            title: const Text('1'),
-            leading: Image.asset('Recursos/aiGenerated.png',
-                width: 45,
-                height: 70),
+            title: const Text('Logout'),
+            leading: Icon(Icons.logout, color: Colors.red,),
             onTap: () {
               onItemTap!(0);
             },
           ),
           ListTile(
-            title: const Text('2'),
-            leading: Icon(Icons.accessible_forward_rounded, color: Colors.red),
+            title: const Text('Mostrar Usuarios activos (5km)'),
+            leading: Icon(Icons.map_rounded, color: Colors.red),
             onTap: () {
               onItemTap!(1);
             },
