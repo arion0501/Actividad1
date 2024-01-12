@@ -65,7 +65,9 @@ class _vistaHomeState extends State<vistaHome> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.white,
       appBar: AppBar(
+        backgroundColor: Colors.teal,
         title: Text("Actividad1"),
         actions: [
           PopupMenuButton(
@@ -273,16 +275,15 @@ class _vistaHomeState extends State<vistaHome> {
   }
 
   void buscarTituloAsync(String searchValue) async {
-    bool titleFound = false;
+    List<String> matches = [];
 
     for (var post in publicaciones) {
-      if (post.titulo.toLowerCase() == searchValue.toLowerCase()) {
-        titleFound = true;
-        break;
+      if (post.titulo.toLowerCase().startsWith(searchValue.toLowerCase())) {
+        matches.add(post.titulo);
       }
     }
 
-    if (titleFound) {
+    if (matches.isNotEmpty) {
       showDialog(
         context: context,
         builder: (BuildContext context) {
@@ -292,7 +293,9 @@ class _vistaHomeState extends State<vistaHome> {
               crossAxisAlignment: CrossAxisAlignment.start,
               mainAxisSize: MainAxisSize.min,
               children: [
-                Text('Se encontró un post con el título: $searchValue'),
+                Text('Se encontraron posts con el título que comienza con: $searchValue'),
+                for (var match in matches)
+                  Text('• $match'),
               ],
             ),
             actions: [
@@ -313,7 +316,7 @@ class _vistaHomeState extends State<vistaHome> {
           return AlertDialog(
             title: Text('Resultados de la Búsqueda'),
             content: Text(
-                'No se encontró ningún post con el título proporcionado.'),
+                'No se encontraron posts con el título que comience con: $searchValue'),
             actions: [
               TextButton(
                 child: Text('Aceptar'),
