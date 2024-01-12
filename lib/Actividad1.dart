@@ -30,7 +30,7 @@ class Actividad1 extends StatelessWidget {
         routes: {
           '/vistalogin': (context) => vistaLoginMovil(),
           '/vistaregistro': (context) => vistaRegistro(),
-          '/vistahome': (context) => vistaHome2(),
+          '/vistahome': (context) => vistaHome(),
           '/vistaperfil': (context) => vistaPerfil(),
           '/vistasplash': (context) => vistaSplash(),
           '/vistapublicacion': (context) => vistaPublicacion(),

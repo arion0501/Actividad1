@@ -78,5 +78,4 @@ class DataHolder {
     usuario!.geoloc = GeoPoint(position!.latitude, position.longitude);
     fbAdmin.actualizarPerfilUsuario(usuario!);
   }
-
 }
