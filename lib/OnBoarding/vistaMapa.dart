@@ -15,7 +15,7 @@ class MapaViewState extends State<vistaMapa> {
   Set<Marker> marcadores = Set();
 
   static final CameraPosition _kMadrid = CameraPosition(
-    target: LatLng(40.4168, -3.7038), // Coordenadas de Madrid
+    target: LatLng(40.4168, -3.7038),
     zoom: 14.0,
   );
 
