@@ -26,14 +26,43 @@ class _vistaHomeState extends State<vistaHome> {
     descargarPublicaciones();
   }
 
-  void fHomeViewDrawerOntap(int indice) {
+  Future<void> fHomeViewDrawerOntap(int indice) async {
     if (indice == 0) {
       FirebaseAuth.instance.signOut();
       Navigator.of(context).pushAndRemoveUntil(
         MaterialPageRoute(builder: (BuildContext context) => vistaLogin()),
         ModalRoute.withName('/vistalogin'),
       );
-    } else if (indice == 1) {}
+    } else if (indice == 1) {
+      List<String> usersInRange = await DataHolder().geolocAdmin.obtenerUsuariosEnRango();
+
+      showDialog(
+        context: context,
+        builder: (BuildContext context) {
+          return AlertDialog(
+            title: Text('Usuarios en rango de 5 km:'),
+            content: Column(
+              children: usersInRange
+                  .map(
+                    (userId) => Text(
+                  userId ?? 'Usuario sin ID',
+                  // 'Usuario sin ID' se mostrará si userId es nulo
+                ),
+              )
+                  .toList(),
+            ),
+            actions: <Widget>[
+              TextButton(
+                child: Text('Cerrar'),
+                onPressed: () {
+                  Navigator.of(context).pop();
+                },
+              ),
+            ],
+          );
+        },
+      );
+    }
   }
 
   void onBottonMenuPressed(int indice) {
