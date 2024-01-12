@@ -1,8 +1,9 @@
 import 'dart:async';
+import 'dart:math';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:geolocator/geolocator.dart';
 
 class GeolocAdmin {
-
   /// Determine the current position of the device.
   ///
   /// When the location services are not enabled or permissions
@@ -44,11 +45,50 @@ class GeolocAdmin {
     return await Geolocator.getCurrentPosition();
   }
 
-  void registrarCambiosLoc(Function (Position? position) funCambioPos) {
+  Future<List<String>> obtenerUsuariosEnRango() async {
+    List<String> usersInRange = [];
+
+    try {
+      // Obtén la posición actual del usuario
+      Position userPosition = await Geolocator.getCurrentPosition();
+
+      // Realiza la consulta en Firestore
+      double radius = 5.0; // Radio en kilómetros
+      GeoPoint center = GeoPoint(userPosition.latitude, userPosition.longitude);
+
+      // Realiza una consulta que obtenga documentos dentro de un cuadrado
+      // (puedes ajustar esto según tus necesidades y considerar la esfericidad de la Tierra)
+      double latOffset = radius / 110.574;
+      double lonOffset = radius / (111.32 * cos(center.latitude * pi / 180));
+
+      QuerySnapshot result = await FirebaseFirestore.instance
+          .collection('Usuarios')
+          .where('localizacion',
+              isGreaterThan: GeoPoint(
+                  center.latitude - latOffset, center.longitude - lonOffset))
+          .where('localizacion',
+              isLessThan: GeoPoint(
+                  center.latitude + latOffset, center.longitude + lonOffset))
+          .get();
+
+      // Itera sobre los documentos y agrega los idUser a la lista
+      result.docs.forEach((doc) {
+        usersInRange.add(doc['nombre']);
+      });
+    } catch (e) {
+      print('Error al obtener usuarios en rango: $e');
+    }
+
+    return usersInRange;
+  }
+
+  void registrarCambiosLoc(Function(Position? position) funCambioPos) {
     const LocationSettings locationSettings = LocationSettings(
       accuracy: LocationAccuracy.high,
       distanceFilter: 0,
     );
-    StreamSubscription<Position> positionStream = Geolocator.getPositionStream(locationSettings: locationSettings).listen(funCambioPos);
+    StreamSubscription<Position> positionStream =
+        Geolocator.getPositionStream(locationSettings: locationSettings)
+            .listen(funCambioPos);
   }
 }
